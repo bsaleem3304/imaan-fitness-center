@@ -1,0 +1,965 @@
+/* =============================================================================
+   SEARCH INPUT FUNCTIONALITY - Show/Hide Toggle
+   Display hidden by default, shown when .active class is applied
+   ============================================================================= */
+
+/* Dark mode variables as default (for initial page load) */
+:root,
+html[data-theme="dark"] {
+  --navy: #0B1220;
+  --navy-light: #111827;
+  --navy-mid: #162033;
+  --navy-card: rgba(22,32,51,0.85);
+  --border: rgba(212,175,55,0.2);
+  --border-light: rgba(255,255,255,0.08);
+  --text: #ffffff;
+  --text-muted: #a0998f;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.nav-search-input {
+  display: none !important;
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 200px;
+  padding: 8px 12px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  background: #f8f8f8;
+  color: #1a1a1a;
+  font-size: 14px;
+  z-index: 100;
+}
+
+/* Show search input when active */
+.nav-search-wrap.active .nav-search-input {
+  display: block !important;
+}
+
+.nav-search-wrap {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  position: relative;
+}
+
+html[data-theme="light"] .nav-search-wrap {
+  background: transparent !important;
+  border: none !important;
+}
+
+html[data-theme="light"] .nav-search-input {
+  background: #f8f8f8 !important;
+  color: #1a1a1a !important;
+  border: 1px solid #cccccc !important;
+}
+
+html[data-theme="light"] .nav-search-input::placeholder {
+  color: #999 !important;
+}
+
+html[data-theme="dark"] .nav-search-input {
+  background: #2a2a3e !important;
+  color: #ffffff !important;
+  border: 1px solid #D4AF37 !important;
+}
+
+html[data-theme="dark"] .nav-search-input::placeholder {
+  color: #aaa !important;
+}
+
+/* =============================================================================
+   LIGHT MODE CSS VARIABLE OVERRIDES
+   Override dark navy backgrounds with light colors for all content areas
+   ============================================================================= */
+
+html[data-theme="light"] {
+  /* Main background colors */
+  --navy: #ffffff;
+  --navy-light: #f8f8f8;
+  --navy-mid: #f5f5f5;
+  --navy-card: #ffffff;
+  
+  /* Border colors */
+  --border: 1px solid #e0e0e0;
+  --border-light: 1px solid #e8e8e8;
+  
+  /* Text colors */
+  --text: #1a1a1a;
+  --text-muted: #666666;
+  
+  /* Shadows - lighter for light mode */
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* =============================================================================
+   GLOBAL LIGHT MODE FIXES - Applies to ALL Pages
+   This file contains all styling updates for consistent light mode appearance
+   ============================================================================= */
+
+/* ============================================================================
+   LIGHT MODE CARD & CONTENT STYLING - Knowledge & All Sections
+   ============================================================================ */
+
+html[data-theme="light"] .card {
+  background: #ffffff !important;
+  border: 1px solid #e0e0e0 !important;
+  color: #1a1a1a !important;
+}
+
+html[data-theme="light"] .card:hover {
+  border-color: #D4AF37 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+html[data-theme="light"] .card h3 {
+  color: #1a1a1a !important;
+}
+
+html[data-theme="light"] .card p {
+  color: #666666 !important;
+}
+
+html[data-theme="light"] .card-link {
+  color: #D4AF37 !important;
+}
+
+/* Impact items and stats */
+html[data-theme="light"] .impact-item {
+  background: #f5f5f5 !important;
+  border: 1px solid #e0e0e0 !important;
+}
+
+html[data-theme="light"] .impact-num {
+  color: #D4AF37 !important;
+}
+
+html[data-theme="light"] .impact-label {
+  color: #666666 !important;
+}
+
+html[data-theme="light"] .stat-num {
+  color: #D4AF37 !important;
+}
+
+html[data-theme="light"] .stat-label {
+  color: #666666 !important;
+}
+
+/* Pillars and about sections */
+html[data-theme="light"] .pillar {
+  background: #ffffff !important;
+  border: 1px solid #e0e0e0 !important;
+  color: #1a1a1a !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+}
+
+html[data-theme="light"] .pillar h4 {
+  color: #1a1a1a !important;
+}
+
+html[data-theme="light"] .pillar p {
+  color: #666666 !important;
+}
+
+/* Page headers */
+html[data-theme="light"] .page-header {
+  background: #f5f5f5 !important;
+  border-bottom: 1px solid #e0e0e0 !important;
+}
+
+html[data-theme="light"] .page-header h1 {
+  color: #1a1a1a !important;
+}
+
+html[data-theme="light"] .page-header p {
+  color: #666666 !important;
+}
+
+/* Section backgrounds */
+html[data-theme="light"] .section-alt {
+  background: #f5f5f5 !important;
+  border-top: 1px solid #e0e0e0 !important;
+  border-bottom: 1px solid #e0e0e0 !important;
+}
+
+html[data-theme="light"] .section-label {
+  color: #1a1a1a !important;
+}
+
+/* Form inputs */
+html[data-theme="light"] .form-section {
+  background: #ffffff !important;
+  border: 1px solid #e0e0e0 !important;
+}
+
+html[data-theme="light"] .form-input {
+  background: #f8f8f8 !important;
+  border: 1px solid #e0e0e0 !important;
+  color: #1a1a1a !important;
+}
+
+html[data-theme="light"] .form-input::placeholder {
+  color: #999999 !important;
+}
+
+html[data-theme="light"] select.form-input option {
+  background: #ffffff !important;
+  color: #1a1a1a !important;
+}
+
+/* Team cards */
+html[data-theme="light"] .team-card {
+  background: #ffffff !important;
+  border: 1px solid #e0e0e0 !important;
+  color: #1a1a1a !important;
+}
+
+html[data-theme="light"] .team-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  border-color: #D4AF37 !important;
+}
+
+html[data-theme="light"] .team-avatar {
+  background: #f5f5f5 !important;
+  border: 2px solid #e0e0e0 !important;
+}
+
+html[data-theme="light"] .team-card h4 {
+  color: #1a1a1a !important;
+}
+
+html[data-theme="light"] .team-card p {
+  color: #666666 !important;
+}
+
+/* Social list items and other list elements */
+html[data-theme="light"] .social-item {
+  background: #ffffff !important;
+  border: 1px solid #e0e0e0 !important;
+  color: #1a1a1a !important;
+}
+
+html[data-theme="light"] .social-item:hover {
+  background: #f5f5f5 !important;
+}
+
+/* ============================================================================
+   1. DONATE NOW BUTTONS - Yellow #E6C65C with Black Text on ALL Pages
+   ============================================================================ */
+html[data-theme="light"] .btn-primary[href*="donate"],
+html[data-theme="light"] .btn-outline[href*="donate"],
+html[data-theme="light"] .nav-donate,
+html[data-theme="light"] .donate-btn,
+html[data-theme="light"] [class*="donate"] {
+  background: #E6C65C !important;
+  color: #000000 !important;
+  border: 2px solid #E6C65C !important;
+}
+
+html[data-theme="light"] .btn-primary[href*="donate"]:hover,
+html[data-theme="light"] .btn-outline[href*="donate"]:hover,
+html[data-theme="light"] .nav-donate:hover,
+html[data-theme="light"] .donate-btn:hover,
+html[data-theme="light"] [class*="donate"]:hover {
+  background: #D4B545 !important;
+  border-color: #D4B545 !important;
+  color: #000000 !important;
+}
+
+/* ============================================================================
+   2. SUPPORT THIS PROGRAM & GET INVOLVED - Yellow #E6C65C with Black Text
+      Both btn-primary and btn-outline in content sections = YELLOW
+   ============================================================================ */
+
+/* Support This Program (btn-primary in knowledge/content sections) */
+html[data-theme="light"] .knowledge-section .btn-primary,
+html[data-theme="light"] .section .btn-primary:not([href*="donate"]):not([href*="programs"]),
+html[data-theme="light"] [class*="content"] .btn-primary:not([href*="donate"]):not([href*="programs"]),
+html[data-theme="light"] .btn-primary:not([href*="donate"]):not([href*="programs"]) {
+  background: #E6C65C !important;
+  color: #000000 !important;
+  border: 2px solid #E6C65C !important;
+}
+
+html[data-theme="light"] .knowledge-section .btn-primary:hover,
+html[data-theme="light"] .section .btn-primary:not([href*="donate"]):not([href*="programs"]):hover,
+html[data-theme="light"] [class*="content"] .btn-primary:not([href*="donate"]):not([href*="programs"]):hover,
+html[data-theme="light"] .btn-primary:not([href*="donate"]):not([href*="programs"]):hover {
+  background: #D4B545 !important;
+  border-color: #D4B545 !important;
+  color: #000000 !important;
+}
+
+/* Get Involved (btn-outline in content sections) */
+html[data-theme="light"] .btn-outline:not([href*="donate"]),
+html[data-theme="light"] .section .btn-outline:not([href*="donate"]),
+html[data-theme="light"] [class*="content"] .btn-outline:not([href*="donate"]),
+html[data-theme="light"] a.btn-outline:not([href*="donate"]) {
+  background: #E6C65C !important;
+  color: #000000 !important;
+  border: 2px solid #E6C65C !important;
+}
+
+html[data-theme="light"] .btn-outline:not([href*="donate"]):hover,
+html[data-theme="light"] .section .btn-outline:not([href*="donate"]):hover,
+html[data-theme="light"] [class*="content"] .btn-outline:not([href*="donate"]):hover,
+html[data-theme="light"] a.btn-outline:not([href*="donate"]):hover {
+  background: #D4B545 !important;
+  border-color: #D4B545 !important;
+  color: #000000 !important;
+}
+
+/* ============================================================================
+   3. FOLLOW US BUTTON - Yellow #E6C65C with Black Text
+   ============================================================================ */
+html[data-theme="light"] .hero-btns a:not([href*="programs"]),
+html[data-theme="light"] a[style*="gold"],
+html[data-theme="light"] a[style*="E6C65C"] {
+  background: #E6C65C !important;
+  color: #000000 !important;
+  border-color: #E6C65C !important;
+}
+
+html[data-theme="light"] .hero-btns a:not([href*="programs"]):hover,
+html[data-theme="light"] a[style*="gold"]:hover,
+html[data-theme="light"] a[style*="E6C65C"]:hover {
+  background: #D4B545 !important;
+  color: #000000 !important;
+}
+
+/* ============================================================================
+   4. GREEN BUTTONS (Programs, Primary Actions) - Green with White Text
+   ============================================================================ */
+html[data-theme="light"] .btn-primary[href*="programs"],
+html[data-theme="light"] a.btn-primary[href*="programs"],
+html[data-theme="light"] .hero-btns .btn-primary {
+  background: #16A34A !important;
+  color: #ffffff !important;
+  border: 2px solid #16A34A !important;
+}
+
+html[data-theme="light"] .btn-primary[href*="programs"]:hover,
+html[data-theme="light"] a.btn-primary[href*="programs"]:hover,
+html[data-theme="light"] .hero-btns .btn-primary:hover {
+  background: #22c55e !important;
+  border-color: #22c55e !important;
+  color: #ffffff !important;
+}
+
+/* ============================================================================
+   5. SOCIAL MEDIA BUTTONS - Brand Colors with White Text on ALL Pages
+   ============================================================================ */
+html[data-theme="light"] .social-btn {
+  color: #fff !important;
+}
+
+html[data-theme="light"] .social-btn[href*="facebook"] {
+  background: #1877F2 !important;
+  border-color: #1877F2 !important;
+  color: #fff !important;
+}
+
+html[data-theme="light"] .social-btn[href*="facebook"] svg {
+  color: #fff !important;
+}
+
+html[data-theme="light"] .social-btn[href*="x.com"],
+html[data-theme="light"] .social-btn[href*="twitter"] {
+  background: #000 !important;
+  border-color: #333 !important;
+  color: #fff !important;
+}
+
+html[data-theme="light"] .social-btn[href*="x.com"] svg,
+html[data-theme="light"] .social-btn[href*="twitter"] svg {
+  color: #fff !important;
+}
+
+html[data-theme="light"] .social-btn[href*="instagram"] {
+  background: linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888) !important;
+  border-color: transparent !important;
+  color: #fff !important;
+}
+
+html[data-theme="light"] .social-btn[href*="instagram"] svg {
+  color: #fff !important;
+}
+
+html[data-theme="light"] .social-btn[href*="youtube"] {
+  background: #FF0000 !important;
+  border-color: #FF0000 !important;
+  color: #fff !important;
+}
+
+html[data-theme="light"] .social-btn[href*="youtube"] svg {
+  color: #fff !important;
+}
+
+html[data-theme="light"] .social-btn[href*="wa.me"],
+html[data-theme="light"] .social-btn[href*="whatsapp"] {
+  background: #25D366 !important;
+  border-color: #25D366 !important;
+  color: #fff !important;
+}
+
+html[data-theme="light"] .social-btn[href*="wa.me"] svg,
+html[data-theme="light"] .social-btn[href*="whatsapp"] svg {
+  color: #fff !important;
+}
+
+html[data-theme="light"] .social-btn[href*="contact"],
+html[data-theme="light"] .social-btn[href*="email"],
+html[data-theme="light"] .btn-primary[href*="contact"],
+html[data-theme="light"] .btn-outline[href*="contact"] {
+  background: var(--gold, #E6C65C) !important;
+  border-color: var(--gold, #E6C65C) !important;
+  color: #000000 !important;
+}
+
+html[data-theme="light"] .social-btn[href*="contact"] svg,
+html[data-theme="light"] .social-btn[href*="email"] svg {
+  color: #000000 !important;
+}
+
+/* ============================================================================
+   6. LIGHT MODE BACKGROUNDS - Remove Blue, Use White on ALL Pages
+   ============================================================================ */
+
+html[data-theme="light"] section,
+html[data-theme="light"] .section,
+html[data-theme="light"] .tile,
+html[data-theme="light"] .card,
+html[data-theme="light"] [class*="knowing"],
+html[data-theme="light"] [class*="creator"] {
+  background: #ffffff !important;
+  color: #1a1a1a !important;
+}
+
+/* Force remove all blue backgrounds in light mode */
+html[data-theme="light"] [style*="background: #0B1220"],
+html[data-theme="light"] [style*="background:#0B1220"],
+html[data-theme="light"] [style*="background: #1a1a2e"],
+html[data-theme="light"] [style*="background:#1a1a2e"],
+html[data-theme="light"] [style*="rgb(11, 18, 32)"],
+html[data-theme="light"] [style*="rgb(26, 26, 46)"] {
+  background-color: #ffffff !important;
+}
+
+/* ============================================================================
+   7. LIGHT MODE TEXT COLORS - All Pages
+   ============================================================================ */
+
+html[data-theme="light"] h1,
+html[data-theme="light"] h2,
+html[data-theme="light"] h3,
+html[data-theme="light"] h4,
+html[data-theme="light"] h5,
+html[data-theme="light"] h6 {
+  color: #16A34A !important;
+}
+
+html[data-theme="light"] p,
+html[data-theme="light"] li,
+html[data-theme="light"] span,
+html[data-theme="light"] .text,
+html[data-theme="light"] .description {
+  color: #1a1a1a !important;
+}
+
+html[data-theme="light"] body,
+html[data-theme="light"] main {
+  background: #ffffff !important;
+  color: #1a1a1a !important;
+}
+
+/* ============================================================================
+   8. SEARCH BAR - All Pages
+   ============================================================================ */
+
+html[data-theme="light"] .nav-search-input {
+  background: #f8f8f8 !important;
+  color: #1a1a1a !important;
+  border: 1px solid #cccccc !important;
+}
+
+html[data-theme="light"] .nav-search-input::placeholder {
+  color: #999 !important;
+}
+
+html[data-theme="light"] .nav-search-btn {
+  color: #1a1a1a !important;
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+html[data-theme="light"] .nav-search-btn:hover {
+  color: #16A34A !important;
+}
+
+/* ============================================================================
+   9. NAVIGATION BAR - Light Mode
+   ============================================================================ */
+
+html[data-theme="light"] nav {
+  background: #ffffff !important;
+  border-bottom: 1px solid #D4AF37 !important;
+}
+
+html[data-theme="light"] .nav-link {
+  color: #1a1a1a !important;
+}
+
+html[data-theme="light"] .nav-link:hover,
+html[data-theme="light"] .nav-link.active {
+  color: #16A34A !important;
+}
+
+/* ============================================================================
+   10. FOOTER - Light Mode
+   ============================================================================ */
+
+html[data-theme="light"] footer {
+  background: #ffffff !important;
+  border-top: 1px solid #D4AF37 !important;
+  color: #1a1a1a !important;
+}
+
+html[data-theme="light"] footer h4 {
+  color: #1a1a1a !important;
+}
+
+html[data-theme="light"] footer a {
+  color: #000000 !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+html[data-theme="light"] footer a:hover {
+  color: #1a1a1a !important;
+  background: transparent !important;
+}
+
+/* ============================================================================
+   11. CARDS AND TILES - Light Mode
+   ============================================================================ */
+
+html[data-theme="light"] .card,
+html[data-theme="light"] .highlight-box,
+html[data-theme="light"] .tile {
+  background: #ffffff !important;
+  color: #1a1a1a !important;
+  border: 1px solid #E6C65C !important;
+}
+
+html[data-theme="light"] .highlight-box {
+  background: #FFF9E6 !important;
+  border-left: 4px solid #D4AF37 !important;
+}
+
+/* ============================================================================
+   12. KNOWLEDGE SECTION - Light Mode Fixes
+   ============================================================================ */
+
+/* Name Cards - Names of Allah page */
+html[data-theme="light"] .name-card {
+  background: #ffffff !important;
+  border: 1px solid #D4AF37 !important;
+  color: #1a1a1a !important;
+}
+
+html[data-theme="light"] .name-card:hover {
+  background: #FFF9E6 !important;
+  border-color: #E6C65C !important;
+  box-shadow: 0 8px 24px rgba(22, 163, 74, 0.15) !important;
+}
+
+/* Card elements within Knowledge pages */
+html[data-theme="light"] .card-top {
+  background: transparent !important;
+  border-bottom: 1px solid #E6C65C !important;
+}
+
+html[data-theme="light"] .card-num,
+html[data-theme="light"] .card-arabic,
+html[data-theme="light"] .card-trans,
+html[data-theme="light"] .card-meaning {
+  color: #1a1a1a !important;
+  background: transparent !important;
+}
+
+html[data-theme="light"] .card-arabic {
+  color: #16A34A !important;
+}
+
+html[data-theme="light"] .card-meaning {
+  color: #666 !important;
+}
+
+html[data-theme="light"] .card-reflection {
+  color: #1a1a1a !important;
+}
+
+html[data-theme="light"] .card-cta-row {
+  color: #16A34A !important;
+  border-top: 1px solid #E6C65C !important;
+}
+
+/* Section Alternative Backgrounds */
+html[data-theme="light"] .section-alt {
+  background: #ffffff !important;
+  border-top: 1px solid #D4AF37 !important;
+  border-bottom: 1px solid #D4AF37 !important;
+}
+
+html[data-theme="light"] .section-alt h2,
+html[data-theme="light"] .section-alt h3,
+html[data-theme="light"] .section-alt h4 {
+  color: #1a1a1a !important;
+}
+
+html[data-theme="light"] .section-alt p,
+html[data-theme="light"] .section-alt span {
+  color: #333 !important;
+}
+
+/* Pillar Boxes */
+html[data-theme="light"] .pillar {
+  background: #ffffff !important;
+  border: 1px solid #D4AF37 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+}
+
+html[data-theme="light"] .pillar h4,
+html[data-theme="light"] .pillar h3 {
+  color: #1a1a1a !important;
+}
+
+html[data-theme="light"] .pillar p {
+  color: #333 !important;
+}
+
+/* Content boxes and detail sections */
+html[data-theme="light"] .detail-section,
+html[data-theme="light"] .detail-box {
+  background: #ffffff !important;
+  border: 1px solid #D4AF37 !important;
+  color: #1a1a1a !important;
+}
+
+html[data-theme="light"] .detail-section h3,
+html[data-theme="light"] .detail-box h3 {
+  color: #1a1a1a !important;
+  border-bottom: 2px solid #D4AF37 !important;
+}
+
+/* Duas and Islamic content boxes */
+html[data-theme="light"] .dua-box,
+html[data-theme="light"] .hadith-box,
+html[data-theme="light"] .quranic-box {
+  background: #FFF9E6 !important;
+  border-left: 4px solid #D4AF37 !important;
+  border: 1px solid #E6C65C !important;
+  color: #1a1a1a !important;
+}
+
+html[data-theme="light"] .dua-arabic,
+html[data-theme="light"] .hadith-arabic,
+html[data-theme="light"] .quran-arabic {
+  color: #16A34A !important;
+}
+
+/* Study guides and learning materials */
+html[data-theme="light"] .study-guide,
+html[data-theme="light"] .learning-material {
+  background: #ffffff !important;
+  border: 1px solid #D4AF37 !important;
+}
+
+html[data-theme="light"] .study-guide h4,
+html[data-theme="light"] .learning-material h4 {
+  color: #1a1a1a !important;
+}
+
+/* List items in Knowledge pages */
+html[data-theme="light"] .knowledge-list li {
+  color: #1a1a1a !important;
+}
+
+html[data-theme="light"] .knowledge-list li::before,
+html[data-theme="light"] .knowledge-list li::marker {
+  color: #D4AF37 !important;
+}
+
+/* Reference and source boxes */
+html[data-theme="light"] .reference-box,
+html[data-theme="light"] .source-box {
+  background: #ffffff !important;
+  border: 1px solid #D4AF37 !important;
+  color: #1a1a1a !important;
+}
+
+html[data-theme="light"] .reference-title,
+html[data-theme="light"] .source-title {
+  color: #16A34A !important;
+}
+
+/* ============================================================================
+   13. DROPDOWNS AND MODALS - Light Mode
+   ============================================================================ */
+
+html[data-theme="light"] .dropdown,
+html[data-theme="light"] .nav-dropdown {
+  background: #ffffff !important;
+  border: 1px solid #D4AF37 !important;
+  color: #1a1a1a !important;
+}
+
+html[data-theme="light"] .dropdown a,
+html[data-theme="light"] .nav-dropdown a {
+  color: #1a1a1a !important;
+  background: #ffffff !important;
+}
+
+html[data-theme="light"] .dropdown a:hover,
+html[data-theme="light"] .nav-dropdown a:hover {
+  background: #FFF9E6 !important;
+  color: #16A34A !important;
+}
+
+/* ============================================================================
+   12. ROTATING BANNER - Light Mode
+   ============================================================================ */
+html[data-theme="light"] .rotating-banner {
+  background: #F5F1E8 !important;
+  border-bottom: 1px solid #E6C65C !important;
+}
+
+html[data-theme="light"] .rotating-msg {
+  color: #2a2a2a !important;
+}
+
+html[data-theme="light"] .rotating-msg a {
+  color: #1a4d2e !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+}
+
+html[data-theme="light"] .rotating-msg a:hover {
+  color: #16A34A !important;
+  text-decoration: underline !important;
+}
+
+html[data-theme="light"] .rotating-close {
+  color: #6b6b6b !important;
+}
+
+html[data-theme="light"] .rotating-close:hover {
+  color: #2a2a2a !important;
+  background: rgba(230, 198, 92, 0.15) !important;
+}
+
+/* ============================================================================
+   13. DONATION POPUP - Light Mode
+   ============================================================================ */
+html[data-theme="light"] .donation-popup {
+  background: #F5F1E8 !important;
+  border: 2px solid #E6C65C !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15) !important;
+}
+
+html[data-theme="light"] .donation-popup-content h3 {
+  color: #1a1a1a !important;
+}
+
+html[data-theme="light"] .donation-popup-content p {
+  color: #2a2a2a !important;
+}
+
+html[data-theme="light"] .donation-popup-btn {
+  background: #E6C65C !important;
+  color: #000000 !important;
+  border: 2px solid #E6C65C !important;
+}
+
+html[data-theme="light"] .donation-popup-btn:hover {
+  background: #D4B545 !important;
+  border-color: #D4B545 !important;
+  color: #000000 !important;
+}
+
+html[data-theme="light"] .donation-popup-close {
+  color: #6b6b6b !important;
+}
+
+html[data-theme="light"] .donation-popup-close:hover {
+  color: #1a1a1a !important;
+  background: rgba(230, 198, 92, 0.2) !important;
+}
+
+html[data-theme="light"] .popup-btn-secondary {
+  background: #16A34A !important;
+  color: #ffffff !important;
+  border-color: #16A34A !important;
+}
+
+html[data-theme="light"] .popup-btn-secondary:hover {
+  background: #15803d !important;
+  border-color: #15803d !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="light"] .donation-popup-buttons .popup-btn-secondary {
+  background: #16A34A !important;
+  color: #ffffff !important;
+  border-color: #16A34A !important;
+}
+
+html[data-theme="light"] .donation-popup-buttons .popup-btn-secondary:hover {
+  background: #15803d !important;
+  border-color: #15803d !important;
+  color: #ffffff !important;
+}
+
+/* Ultra-specific rule for secondary button text */
+html[data-theme="light"] .donation-popup .donation-popup-buttons a.popup-btn.popup-btn-secondary {
+  color: #ffffff !important;
+  background-color: #16A34A !important;
+}
+
+html[data-theme="light"] .donation-popup .donation-popup-buttons a.popup-btn.popup-btn-secondary:hover {
+  color: #ffffff !important;
+  background-color: #15803d !important;
+}
+
+/* ============================================================================
+   14. FOLLOW US BUTTON - Light Mode
+   ============================================================================ */
+html[data-theme="light"] .follow-btn {
+  background: #E6C65C !important;
+  color: #000000 !important;
+  border: 2px solid #E6C65C !important;
+}
+
+html[data-theme="light"] .follow-btn:hover {
+  background: #D4B545 !important;
+  border-color: #D4B545 !important;
+  color: #000000 !important;
+}
+
+/* ============================================================================
+   15. DONATION CATEGORY CARDS - Light Mode
+   ============================================================================ */
+html[data-theme="light"] section {
+  background: #ffffff !important;
+  border: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+}
+
+html[data-theme="light"] .donate-options {
+  background: transparent !important;
+  border: none !important;
+}
+
+html[data-theme="light"] .donate-card {
+  background: #f8f8f8 !important;
+  border: 1.5px solid #e0e0e0 !important;
+  color: #1a1a1a !important;
+}
+
+html[data-theme="light"] .donate-card-icon {
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  color: inherit !important;
+  display: inline-block !important;
+}
+
+html[data-theme="light"] .donate-card h3 {
+  color: #1a1a1a !important;
+}
+
+html[data-theme="light"] .donate-card p {
+  color: #666666 !important;
+}
+
+html[data-theme="light"] .donate-card:hover {
+  background: #f8f8f8 !important;
+  border: 1.5px solid #e0e0e0 !important;
+  color: #1a1a1a !important;
+}
+
+html[data-theme="light"] .donate-card:hover h3 {
+  color: #1a1a1a !important;
+}
+
+html[data-theme="light"] .donate-card:hover p {
+  color: #666666 !important;
+}
+
+html[data-theme="light"] .donate-card:hover .donate-card-icon {
+  color: inherit !important;
+}
+
+html[data-theme="light"] .donate-card.selected {
+  background: rgba(212, 175, 55, 0.12) !important;
+  border-color: #D4AF37 !important;
+  color: #D4AF37 !important;
+}
+
+html[data-theme="light"] .donate-card.selected h3 {
+  color: #D4AF37 !important;
+}
+
+html[data-theme="light"] .donate-card.selected p {
+  color: #D4AF37 !important;
+}
+
+html[data-theme="light"] .donate-card.selected .donate-card-icon {
+  color: #D4AF37 !important;
+}
+
+/* ============================================================================
+   16. AMOUNT AND FREQUENCY BUTTONS - Light Mode
+   ============================================================================ */
+html[data-theme="light"] .amount-btn {
+  background: #f8f8f8 !important;
+  border: 1.5px solid #e0e0e0 !important;
+  color: #1a1a1a !important;
+}
+
+html[data-theme="light"] .amount-btn:hover {
+  border-color: #D4AF37 !important;
+  color: #D4AF37 !important;
+}
+
+html[data-theme="light"] .amount-btn.active {
+  background: rgba(212, 175, 55, 0.12) !important;
+  border-color: #D4AF37 !important;
+  color: #D4AF37 !important;
+}
+
+html[data-theme="light"] .frequency-btn {
+  background: #f8f8f8 !important;
+  border: 1.5px solid #e0e0e0 !important;
+  color: #1a1a1a !important;
+}
+
+html[data-theme="light"] .frequency-btn:hover {
+  border-color: #D4AF37 !important;
+  color: #D4AF37 !important;
+}
+
+html[data-theme="light"] .frequency-btn.active {
+  background: rgba(212, 175, 55, 0.12) !important;
+  border-color: #D4AF37 !important;
+  color: #D4AF37 !important;
+}
+
